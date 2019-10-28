@@ -1,12 +1,38 @@
 import React from 'react';
 import { connect } from "react-redux";
+import Amplify, { Auth } from 'aws-amplify'
 
 class Login extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { id: "", pw: "" }
+    }
 
     // ログインボタンのイベントハンドラ（クリック）
     login = () => {
+
+        // cognito認証用のamplifyの設定
+        Amplify.configure({
+            Auth: {
+                // リージョン
+                region: 'ap-northeast-1',
+                // ユーザープールのID
+                userPoolId: sessionStorage.getItem('poolId'),
+                // ユーザープールのウェブクライアントID
+                userPoolWebClientId: sessionStorage.getItem('clientId'),
+                mandatorySignIn: true,
+                // 認証後に貰える情報をセッションストレージに入れる
+                storage: window.sessionStorage,
+            }
+        })
+
         this.props.increment()
-        console.log(this)
+        // console.log(this)
+
+        // cognito認証
+        Auth.signIn(this.state.id, this.state.pw).then(res => {
+            console.log(res)
+        })
     }
 
     // ID/PWボタンのイベントハンドラ（更新）
