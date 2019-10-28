@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Hoge from "./components/Hoge";
+import Login from "./containers/Login";
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 
 function Route1({match}) {
@@ -48,12 +49,14 @@ function App() {
                             <ul>
                                 <li><Link to="/">root_link</Link></li>
                                 <li><Link to="/route1/1">route1_link</Link></li>
+                                <li><Link to="/login">login_link</Link></li>
                             </ul>
                         </nav>
 
                         <Switch>
-                            <Route path="/route1/:id1" component={Route1}/>
-                            <Route path="/"> <Root/> </Route>
+                            <Route exact path="/"> <Root /> </Route>
+                            <Route exact path="/login" component={Login} />
+                            <Route exact path="/route1/:id1" component={Route1} />
                         </Switch>
                     </div>
                 </Router>
