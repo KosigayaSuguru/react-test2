@@ -6,6 +6,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = { id: "", pw: "" }
+        console.log("Login#constructor@props")
+        console.log(props)
     }
 
     // ログインボタンのイベントハンドラ（クリック）
@@ -27,7 +29,8 @@ class Login extends React.Component {
         })
 
         this.props.increment()
-        // console.log(this)
+        this.props.auth()
+        console.log(this)
 
         // cognito認証
         Auth.signIn(this.state.id, this.state.pw).then(res => {
@@ -51,10 +54,10 @@ class Login extends React.Component {
 
         return (
             <div>
-                <div>ID: <input type="text" name="id" onChange={this.update}></input></div>
-                <div>PW: <input type="text" name="pw" onChange={this.update}></input></div>
+                <div>ID: <input type="text" name="id" placeholder="hogeman5" onChange={this.update}></input></div>
+                <div>PW: <input type="text" name="pw" placeholder="password" onChange={this.update}></input></div>
                 <button onClick={this.login}>ログイン</button>
-            </div >
+            </div>
         )
     }
 }
@@ -63,7 +66,7 @@ const mapStateToProps = state => {
     // console.log("- - - - - -")
     // console.log(state)
     // console.log("- - - - - -")
-    return { aa: state.counter1, bb: state.counter2 };
+    return { aa: state.counter1, bb: state.counter2, auth_status: state.auth };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -71,6 +74,7 @@ const mapDispatchToProps = dispatch => {
         // dispatching plain actions
         increment: () => dispatch({ type: 'INCREMENT' }),
         decrement: () => dispatch({ type: 'DECREMENT' }),
+        auth: () => dispatch({ type: 'AUTH' }),
     }
 }
 
