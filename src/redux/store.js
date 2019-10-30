@@ -1,29 +1,7 @@
-import { combineReducers, createStore } from 'redux'
+import { createStore } from 'redux'
+import { rootReducer } from './reducers'
 
-function counter1(state = 0, action) {
-    switch (action.type) {
-        case 'INCREMENT':
-            return state + 1
-        case 'DECREMENT':
-            return state - 1
-        default:
-            return state
-    }
-}
-
-function counter2(state = 0, action) {
-    switch (action.type) {
-        case 'INCREMENT':
-            return state + 1
-        case 'DECREMENT':
-            return state - 1
-        default:
-            return state
-    }
-}
-
-var counter = combineReducers({ counter1, counter2 })
-let store = createStore(counter)
+let store = createStore(rootReducer)
 
 export default store
 
