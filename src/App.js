@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./routes/PrivateRoute"
 import Loggedin from './components/Loggedin';
 
+import Main from './components/my/common/layout'
+
 function Route1({ match }) {
     console.log(match);
     return (
@@ -30,23 +32,23 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
+        <Router>
+            <div className="App">
+                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <p>
+                        Edit <code>src/App.js</code> and save to reload.
                 </p>
-                {list}
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
+                    {list}
+                    <a
+                        className="App-link"
+                        href="https://reactjs.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Learn React
                 </a>
 
-                <Router>
                     <div>
                         <nav>
                             <ul>
@@ -65,9 +67,10 @@ function App() {
                         <Switch>
                         </Switch>
                     </div>
-                </Router>
-            </header>
-        </div>
+                </header>
+                <Main />
+            </div>
+        </Router>
     );
 }
 

@@ -10,10 +10,13 @@ class PrivateRoute extends React.Component {
     }
 
     render() {
+        let Component = this.props.children.type
+        let path = this.props.path
+
         if (this.props.auth_status === true) {
-            return (<Route path={this.props.path} component={this.props.children.type}></Route>)
+            return (<Route path={path}><Component /></Route>)
         } else {
-            return (<Route path={this.props.path}><Redirect to={'/login'} /></Route>)
+            return (<Route path={path}><Redirect to={{ pathname: '/login', search: "?redirect=" + path }} /></Route>)
         }
     }
 }
