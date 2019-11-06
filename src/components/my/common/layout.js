@@ -7,21 +7,17 @@ import Contents1 from "../contents1"
 import Default from "../default"
 
 import {
-    BrowserRouter as Router, Route, Switch
+    BrowserRouter as Router, Route, Switch, withRouter
 } from "react-router-dom";
 
 import PrivateRoute from "../../../routes/PrivateRoute"
 
-export default class Main extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
+class Main extends React.Component {
 
     render() {
 
         return (
-            <div style={{ width: "1200px", margin: "0 auto;" }}>
+            <div style={{ width: "1200px", margin: "0 auto" }}>
                 <Header />
                 <div style={{ display: "flex" }}>
                     <Sidebar />
@@ -36,3 +32,5 @@ export default class Main extends React.Component {
         )
     }
 }
+
+export default withRouter(Main)

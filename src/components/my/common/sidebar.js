@@ -12,7 +12,7 @@ class Sidebar extends React.Component {
             component = <div style={{ width: "40%", padding: "10px", backgroundColor: "cornflowerblue" }}>
                 side
                 <ul>
-                    {list.map((val, idx) => <li style={{ textAlign: "left" }}><Link to={"/my/component" + (idx + 1)}>{val}</Link></li>)}
+                    {list.map((val, idx) => <li key={"component" + (idx + 1)} style={{ textAlign: "left" }}><Link to={"/my/component" + (idx + 1)}>{val}</Link></li>)}
                 </ul>
             </div>
         } else {
