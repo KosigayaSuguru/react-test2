@@ -2,16 +2,13 @@ import React from 'react';
 import { connect } from "react-redux";
 import Amplify, { Auth } from 'aws-amplify'
 
+
 class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = { id: "", pw: "" }
         console.log("Login#constructor@props")
         console.log(props)
-    }
-
-    // ログインボタンのイベントハンドラ（クリック）
-    login = () => {
 
         // cognito認証用のamplifyの設定
         Amplify.configure({
@@ -22,20 +19,40 @@ class Login extends React.Component {
                 userPoolId: sessionStorage.getItem('poolId'),
                 // ユーザープールのウェブクライアントID
                 userPoolWebClientId: sessionStorage.getItem('clientId'),
-                mandatorySignIn: true,
+                // mandatorySignIn: true,
                 // 認証後に貰える情報をセッションストレージに入れる
                 storage: window.sessionStorage,
+
+                // 以下、IDプールからクレデンシャルが取得したい時用
+                identityPoolId: sessionStorage.getItem('idpId'),
             }
         })
+    }
+
+    // ログインボタンのイベントハンドラ（クリック）
+    login = async () => {
 
         this.props.increment()
         this.props.auth()
         console.log(this)
 
         // cognito認証
-        Auth.signIn(this.state.id, this.state.pw).then(res => {
-            console.log(res)
-        })
+        var res = await Auth.signIn(this.state.id, this.state.pw)
+        console.log(res)
+    }
+
+    // トークン更新ボタンのイベントハンドラ（クリック）
+    token = async () => {
+        // トークン更新
+        var res = await Auth.currentSession()
+        console.log(res)
+    }
+
+    // 一時クレデンシャル更新ボタンのイベントハンドラ（クリック）
+    credential = async () => {
+        // トークン更新
+        var res = await Auth.currentCredentials()
+        console.log(res)
     }
 
     // ID/PWボタンのイベントハンドラ（更新）
@@ -57,6 +74,8 @@ class Login extends React.Component {
                 <div>ID: <input type="text" name="id" placeholder="hogeman5" onChange={this.update}></input></div>
                 <div>PW: <input type="text" name="pw" placeholder="password" onChange={this.update}></input></div>
                 <button onClick={this.login}>ログイン</button>
+                <button onClick={this.token}>トークン更新</button>
+                <button onClick={this.credential}>一時クレデンシャル更新</button>
             </div>
         )
     }
