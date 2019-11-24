@@ -1,7 +1,11 @@
 import React from 'react';
 import '../App.css';
 
-class Hoge extends React.Component {
+interface HogeProps {
+    a: string;
+}
+
+class Hoge extends React.Component<HogeProps> {
 
     render() {
         return (
