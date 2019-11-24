@@ -10,7 +10,7 @@ import Loggedin from './components/Loggedin';
 
 import Main from './components/my/common/layout'
 
-function Route1({ match }) {
+function Route1({ match }: { match: any, hoge: any }) {
     console.log(match);
     return (
         <div>route1</div>
