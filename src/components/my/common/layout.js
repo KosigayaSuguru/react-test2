@@ -7,7 +7,7 @@ import Contents1 from "../contents1"
 import Default from "../default"
 
 import {
-    BrowserRouter as Router, Route, Switch, withRouter
+    BrowserRouter as Route, Switch, withRouter
 } from "react-router-dom";
 
 import PrivateRoute from "../../../routes/PrivateRoute"
