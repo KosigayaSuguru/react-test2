@@ -1,11 +1,11 @@
-import { createStore } from 'redux'
-import { rootReducer } from './reducers'
+import { createStore } from 'redux';
+import { rootReducer } from './reducers';
 
-let store = createStore(rootReducer)
+let store = createStore(rootReducer);
 
-export default store
+export default store;
 
-store.subscribe(() => console.log(store.getState()))
+store.subscribe(() => console.log(store.getState()));
 
-store.dispatch({ type: 'INCREMENT' })
-store.dispatch({ type: 'DECREMENT' })
+store.dispatch({ type: 'INCREMENT' });
+store.dispatch({ type: 'DECREMENT' });

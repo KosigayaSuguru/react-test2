@@ -1,25 +1,25 @@
-import React from "react"
+import React from 'react';
 
-import Sidebar from "./sidebar"
-import Header from "./header"
-import Footer from "./footer"
-import Contents1 from "../contents1"
-import Default from "../default"
+import Sidebar from './sidebar';
+import Header from './header';
+import Footer from './footer';
+import Contents1 from '../contents1';
+import Default from '../default';
 
 import {
     BrowserRouter as Route, Switch, withRouter
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import PrivateRoute from "../../../routes/PrivateRoute"
+import PrivateRoute from '../../../routes/PrivateRoute';
 
 class Main extends React.Component {
 
     render() {
 
         return (
-            <div style={{ width: "1200px", margin: "0 auto" }}>
+            <div style={{ width: '1200px', margin: '0 auto' }}>
                 <Header />
-                <div style={{ display: "flex" }}>
+                <div style={{ display: 'flex' }}>
                     <Sidebar />
                     <Switch>
                         <Route exact path="/login" component={Contents1}></Route>
@@ -29,8 +29,8 @@ class Main extends React.Component {
                 </div>
                 <Footer />
             </div>
-        )
+        );
     }
 }
 
-export default withRouter(Main)
+export default withRouter(Main);
