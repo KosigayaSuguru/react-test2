@@ -7,8 +7,7 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = { id: '', pw: '' };
-        console.log('Login#constructor@props');
-        console.log(props);
+        console.log('Login#constructor');
 
         // cognito認証用のamplifyの設定
         Amplify.configure({
@@ -64,11 +63,7 @@ class Login extends React.Component {
     }
 
     render() {
-
-        // console.log("----------")
-        // console.log(this.props)
-        // console.log("----------")
-
+        console.log('Login#render()');
         return (
             <div>
                 <div>ID: <input type="text" name="id" placeholder="hogeman5" onChange={this.update}></input></div>

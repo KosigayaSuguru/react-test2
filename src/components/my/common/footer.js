@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 
 
 class Footer extends React.Component {
+    constructor(props){
+        super(props);
+        console.log('Footer#constructor()');
+    }
     render() {
+        console.log('Footer#render()');
+        
         let footer;
         if (this.props.auth_status) {
             footer = <footer style={{ textAlign: 'center', backgroundColor: 'darkblue', color: 'floralwhite' }}> footer area </footer>;

@@ -13,8 +13,13 @@ import {
 import PrivateRoute from '../../../routes/PrivateRoute';
 
 class Main extends React.Component {
+    constructor(props){
+        super(props);
+        console.log('Main#constructor()');
+    }
 
     render() {
+        console.log('Main#render()');
 
         return (
             <div style={{ width: '1200px', margin: '0 auto' }}>

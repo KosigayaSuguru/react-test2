@@ -11,6 +11,7 @@ import Loggedin from './components/Loggedin';
 import Main from './components/my/common/layout'
 
 function Route1({ match }: { match: any, hoge: any }) {
+    console.log("#Route1()")
     console.log(match);
     return (
         <div>route1</div>
@@ -18,6 +19,7 @@ function Route1({ match }: { match: any, hoge: any }) {
 }
 
 function Root() {
+    console.log("#Root()")
     return (
         <div>root</div>
     )
@@ -31,6 +33,7 @@ function App() {
         list.push(<Hoge key={i} a="gggg" />);
     }
 
+    console.log("#App()")
     return (
         <Router>
             <div className="App">
